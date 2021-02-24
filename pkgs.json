@@ -19,5 +19,6 @@
   "tokei",
   "tree",
   "wget",
-  "youtube-dl"
+  "youtube-dl",
+  "nixfmt"
 ]

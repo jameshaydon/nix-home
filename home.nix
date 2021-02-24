@@ -74,6 +74,9 @@ with builtins; {
 
         # NOTE: where haskell installs stuff:
         export PATH="$HOME/.local/bin:$PATH"
+
+        # NOTE: the 'run' scipt in _this_ repo:
+        export PATH="$HOME/nix-home/bin:$PATH"
         '';
     };
 

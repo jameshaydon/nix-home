@@ -31,19 +31,12 @@ Note:
 `hm` is alias for `run home-manager` where `run` is a small wrapper script to pass
 home-manager the updated `NIX_PATH` after a `niv update`.
 
-### iTerm2
-
-Preferences > Profiles > Command: Custom shell:
-
-`/Users/pwm/.nix-profile/bin/fish`
-
-### VSCode
-
-Note to self:
-Always run it from the cli, ie. `code` and not by clicking the icon in the dock.
-This way env vars will be present.
-
 ### Missing from nixpkgs:
 
 - assume-role
 - saw
+
+### JAMES TODO:
+
+- Shouldn't install clojure/clojure-lsp/leinengen globally, make nix setup for projects that need it.
+- clojure-lsp not working

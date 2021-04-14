@@ -3,6 +3,7 @@ let
   sources = import ./nix/sources.nix;
   hm = import sources.home-manager { };
   pkgs = import sources.nixpkgs { };
+  myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
 in
 with builtins; {
   nixpkgs.config.allowUnfree = true;
@@ -13,7 +14,7 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json));
+      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell];
 
     file = {
     };
@@ -77,6 +78,9 @@ with builtins; {
 
         # NOTE: the 'run' scipt in _this_ repo:
         export PATH="$HOME/nix-home/bin:$PATH"
+
+        # NOTE: locally installed npm modules
+        export PATH="$PATH:./node_modules/.bin"
         '';
     };
 

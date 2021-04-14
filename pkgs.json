@@ -1,5 +1,4 @@
 [
-  "aspell",
   "clojure",
   "leiningen",
   "awscli",
@@ -20,5 +19,7 @@
   "tree",
   "wget",
   "youtube-dl",
-  "nixfmt"
+  "nixfmt",
+  "sass",
+  "z3"
 ]

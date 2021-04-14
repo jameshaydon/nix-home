@@ -103,7 +103,7 @@ with builtins; {
       ];
       aliases = {};
       extraConfig = {
-        branch.autosetuprebasea = "always";
+        branch.autosetuprebase = "always";
         color.diff-highlight.oldNormal = "red bold";
         color.diff-highlight.oldHighlight = "red bold 52";
         color.diff-highlight.newNormal = "green bold";
@@ -124,6 +124,7 @@ with builtins; {
         icdiff.pager = "less --tabs=4 -RFX";
         interactive.diffFilter = "diff-so-fancy --patch";
         push.recurseSubmodules = "no";
+        rebase.autosquash = "true";
         submodule.recurse = "true";
         log.decorate = "full";
         diff.algorithm = "minimal";

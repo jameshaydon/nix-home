@@ -1,7 +1,6 @@
 [
   "clojure",
   "leiningen",
-  "awscli",
   "bash",
   "cachix",
   "diff-so-fancy",

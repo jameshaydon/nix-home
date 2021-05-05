@@ -3,7 +3,6 @@
   "leiningen",
   "bash",
   "cachix",
-  "direnv",
   "exa",
   "fd",
   "ffmpeg",

@@ -1,14 +1,26 @@
 {
+    "emacs-osx": {
+        "branch": "main",
+        "description": "Emacs on Mac OSX. Install with Nix",
+        "homepage": "",
+        "owner": "sagittaros",
+        "repo": "emacs-osx",
+        "rev": "2e699a9f7fd86d1c9a5b254e23e87a632c396924",
+        "sha256": "1vdbvgaap4n0sajjxfnpdjvh4kbz21yl47xidw3jmlwdln4pvlna",
+        "type": "tarball",
+        "url": "https://github.com/sagittaros/emacs-osx/archive/2e699a9f7fd86d1c9a5b254e23e87a632c396924.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "db00b39a9abec04245486a01b236b8d9734c9ad0",
-        "sha256": "12r8j34j6x26c7vr4na5nrm4sm8rg5m5im109j6xw0zfcpi9vjqi",
+        "rev": "64c5228c0828fff0c94c1d42f7225115c299ae08",
+        "sha256": "06ljavkj3k5admvjf0x4ivxjmp5xmayc2gc0xq463k7qb3w27j7h",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/db00b39a9abec04245486a01b236b8d9734c9ad0.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/64c5228c0828fff0c94c1d42f7225115c299ae08.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -17,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "14b5ddf08504fa23b949c3dcf84db17035560fbb",
-        "sha256": "09a5v06lb5bkkdrcwkzdziaav3p95hawa0gq5w2qh56clgm1a2bh",
+        "rev": "48023b598fcdb618a93b74d1c79583f4613cf700",
+        "sha256": "0aq2dsc0dikzr2kqkz4narwkfb78kg56bf06xhxlv5ks1637s80z",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/14b5ddf08504fa23b949c3dcf84db17035560fbb.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/48023b598fcdb618a93b74d1c79583f4613cf700.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

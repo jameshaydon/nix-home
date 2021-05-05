@@ -5,6 +5,19 @@ let
   pkgs = import sources.nixpkgs { };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
   emacs-osx = import sources.emacs-osx;
+  #  overlays = [
+  #    (self: super: {
+  #      git = super.git.overrideAttrs (old: rec {
+  #        name = "git-2.30.2";
+  #        version = "2.30.2";
+  #        src = builtins.fetchurl {
+  #          url = "https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz";
+  #          sha256 = "1ajz6lng6yldqm66lhrjfgbbxk09rq8cngv7hz9nqizrf46dkxs1";
+  #        };
+  #      });
+  #    })
+  #  ];
+  #};
 in
 with builtins; {
 
@@ -34,7 +47,6 @@ with builtins; {
   };
 
   programs = {
-
     home-manager.enable = true;
 
     bat.enable = true;
@@ -122,10 +134,6 @@ with builtins; {
         color.branch = "auto";
         color.status = "auto";
         color.interactive = "auto";
-        core.pager = "diff-so-fancy | less --tabs=4 -RFX";
-        icdiff.options = "--highlight --line-numbers";
-        icdiff.pager = "less --tabs=4 -RFX";
-        interactive.diffFilter = "diff-so-fancy --patch";
         push.recurseSubmodules = "no";
         rebase.autosquash = "true";
         submodule.recurse = "true";
@@ -139,6 +147,11 @@ with builtins; {
         rerere.enabled = "true";
         rerere.autoupdate = "true";
         credential.helper = "cache --timeout=604800";
+
+        delta.features = "side-by-side line-numbers";
+        delta.whitespace-error-style = "22 reverse";
+        core.pager = "delta";
+        interactive.diffFilter = "delta --color-only";
       };
     };
 

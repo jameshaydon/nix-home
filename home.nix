@@ -4,7 +4,8 @@ let
   hm = import sources.home-manager { };
   pkgs = import sources.nixpkgs { };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  emacs-osx = import sources.emacs-osx;
+  # emacs-osx = import sources.emacs-osx;
+
   #  overlays = [
   #    (self: super: {
   #      git = super.git.overrideAttrs (old: rec {
@@ -29,7 +30,7 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell emacs-osx.emacsOsxNative];
+      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell]; # emacs-osx.emacsOsxNative
 
     file = {
     };
@@ -86,16 +87,25 @@ with builtins; {
         }
 
         # NOTE: Doom scripts:
-        export PATH="$HOME/.emacs.d/bin:$PATH"
+        export PATH="$PATH:$HOME/.emacs.d/bin"
 
         # NOTE: where haskell installs stuff:
-        export PATH="$HOME/.local/bin:$PATH"
+        export PATH="$PATH:$HOME/.local/bin"
 
         # NOTE: the 'run' scipt in _this_ repo:
-        export PATH="$HOME/nix-home/bin:$PATH"
+        export PATH="$PATH:$HOME/nix-home/bin"
 
         # NOTE: locally installed npm modules
         export PATH="$PATH:./node_modules/.bin"
+
+        # NOTE: where brew cask installs latex
+        export PATH="$PATH:/Library/TeX/texbin"
+
+        # NOTE: idris 2 executable when building from source
+        export PATH="$PATH:$HOME/.idris2/bin"
+
+        # NOTE: idris2: so that the system knows where to look for library support code
+        export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
         '';
     };
 

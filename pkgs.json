@@ -1,4 +1,5 @@
 [
+  "haskellPackages.implicit-hie",
   "clojure",
   "leiningen",
   "bash",
@@ -12,6 +13,7 @@
   "graphviz",
   "niv",
   "nodejs",
+  "nodePackages.prettier",
   "ripgrep",
   "shellcheck",
   "tokei",
@@ -20,5 +22,10 @@
   "youtube-dl",
   "nixfmt",
   "sass",
-  "z3"
+  "z3",
+  "pandoc",
+  "chez",
+  "idris",
+  "fswatch",
+  "pdf2svg"
 ]

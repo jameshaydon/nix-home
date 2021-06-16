@@ -27,5 +27,6 @@
   "chez",
   "idris",
   "fswatch",
-  "pdf2svg"
+  "pdf2svg",
+  "zile"
 ]

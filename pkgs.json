@@ -14,6 +14,8 @@
   "niv",
   "nodejs",
   "nodePackages.prettier",
+  "nodePackages.stylelint",
+  "nodePackages.js-beautify",
   "ripgrep",
   "shellcheck",
   "tokei",

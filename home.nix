@@ -5,20 +5,6 @@ let
   pkgs = import sources.nixpkgs { };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
   emacs-osx = import sources.emacs-osx;
-
-  #  overlays = [
-  #    (self: super: {
-  #      git = super.git.overrideAttrs (old: rec {
-  #        name = "git-2.30.2";
-  #        version = "2.30.2";
-  #        src = builtins.fetchurl {
-  #          url = "https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz";
-  #          sha256 = "1ajz6lng6yldqm66lhrjfgbbxk09rq8cngv7hz9nqizrf46dkxs1";
-  #        };
-  #      });
-  #    })
-  #  ];
-  #};
 in
 with builtins; {
 
@@ -53,6 +39,7 @@ with builtins; {
     bat.enable = true;
 
     direnv.enable = true;
+    #direnv.enableNixDirenvIntegration = true;
 
     zsh = {
       enable = true;
@@ -128,7 +115,6 @@ with builtins; {
       ];
       aliases = {};
       extraConfig = {
-        branch.autosetuprebase = "always";
         color.diff-highlight.oldNormal = "red bold";
         color.diff-highlight.oldHighlight = "red bold 52";
         color.diff-highlight.newNormal = "green bold";
@@ -144,9 +130,6 @@ with builtins; {
         color.branch = "auto";
         color.status = "auto";
         color.interactive = "auto";
-        push.recurseSubmodules = "no";
-        rebase.autosquash = "true";
-        submodule.recurse = "true";
         log.decorate = "full";
         diff.algorithm = "minimal";
         diff.mnemonicprefix = "true";
@@ -157,7 +140,10 @@ with builtins; {
         rerere.enabled = "true";
         rerere.autoupdate = "true";
         credential.helper = "cache --timeout=604800";
-
+        branch.autosetuprebase = "always";
+        push.recurseSubmodules = "no";
+        rebase.autosquash = "true";
+        submodule.recurse = "true";
         delta.features = "side-by-side line-numbers";
         delta.whitespace-error-style = "22 reverse";
         core.pager = "delta";

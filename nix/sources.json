@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "sagittaros",
         "repo": "emacs-osx",
-        "rev": "9f23265af2e6a98b965cb4ec8c5845d072d33aa4",
-        "sha256": "1b3w3842gbqq7rr4q2ir1dmyjmrvvx3hz4w4bmd8wcf67z3n7s6z",
+        "rev": "bff18f773f0c52282995bfa27609ac9e3e84ed7f",
+        "sha256": "121ifjgcvrkh2bfhjhhy22nqc4x52ccvlgrzkczmqpy0sm8hw1a3",
         "type": "tarball",
-        "url": "https://github.com/sagittaros/emacs-osx/archive/9f23265af2e6a98b965cb4ec8c5845d072d33aa4.tar.gz",
+        "url": "https://github.com/sagittaros/emacs-osx/archive/bff18f773f0c52282995bfa27609ac9e3e84ed7f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "db6e089456cdddcd7e2c1d8dac37a505c797e8fa",
-        "sha256": "02yk20i9n5nhn6zgll3af7kp3q5flgrpg1h5vcqfdqcck8iikx4b",
+        "rev": "357d2c8f6087685fe35cb1889a005a4dd4cce7b8",
+        "sha256": "1i0qfnl218xf9ncw2gg78vp1lw6xyvnbkxz9dy4iib9m4l6xqclf",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/db6e089456cdddcd7e2c1d8dac37a505c797e8fa.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/357d2c8f6087685fe35cb1889a005a4dd4cce7b8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -4,7 +4,7 @@ let
   hm = import sources.home-manager { };
   pkgs = import sources.nixpkgs { };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  # emacs-osx = import sources.emacs-osx;
+  emacs-osx = import sources.emacs-osx;
 
   #  overlays = [
   #    (self: super: {
@@ -30,7 +30,7 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell]; # emacs-osx.emacsOsxNative
+      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell emacs-osx.emacsOsxNative];
 
     file = {
     };

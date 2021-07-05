@@ -91,6 +91,9 @@ with builtins; {
         # NOTE: idris 2 executable when building from source
         export PATH="$PATH:$HOME/.idris2/bin"
 
+        # NOTE: ghcup:
+        export PATH="$PATH:$HOME/.ghcup/bin"
+
         # NOTE: idris2: so that the system knows where to look for library support code
         export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
         '';

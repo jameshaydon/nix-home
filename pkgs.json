@@ -12,6 +12,8 @@
   "gitAndTools.delta",
   "gitAndTools.gh",
   "graphviz",
+  "haskellPackages.implicit-hie",
+  "haskellPackages.hpack",
   "idris",
   "niv",
   "nixfmt",

@@ -15,6 +15,7 @@
   "haskellPackages.implicit-hie",
   "haskellPackages.hpack",
   "idris",
+  "just",
   "niv",
   "nixfmt",
   "nodejs",

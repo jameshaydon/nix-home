@@ -1,6 +1,5 @@
 [
   "bash",
-  "bat",
   "cachix",
   "chez",
   "dust",
@@ -14,7 +13,7 @@
   "graphviz",
   "haskellPackages.implicit-hie",
   "haskellPackages.hpack",
-  "idris",
+  "idris2",
   "just",
   "niv",
   "nixfmt",
@@ -27,7 +26,6 @@
   "ripgrep",
   "sass",
   "shellcheck",
-  "tokei",
   "tree",
   "wget",
   "youtube-dl",

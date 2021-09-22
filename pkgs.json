@@ -1,15 +1,20 @@
 [
+  "awscli2",
   "bash",
   "cachix",
   "chez",
+  "cmake",
+  "coreutils",
   "dust",
   "exa",
   "fd",
   "ffmpeg",
+  "fontconfig",
   "fira-code",
   "fswatch",
   "gitAndTools.delta",
   "gitAndTools.gh",
+  "gnugrep",
   "graphviz",
   "haskellPackages.implicit-hie",
   "haskellPackages.hpack",
@@ -29,6 +34,5 @@
   "tree",
   "wget",
   "youtube-dl",
-  "z3",
   "zile"
 ]

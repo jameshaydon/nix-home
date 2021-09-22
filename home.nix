@@ -2,13 +2,14 @@ user: { config, ... }:
 let
   sources = import ./nix/sources.nix;
   hm = import sources.home-manager { };
-  pkgs = import sources.nixpkgs { };
+  pkgs = import sources.nixpkgs { overlays = [ (import (builtins.fetchTarball {  url = https://github.com/nix-community/emacs-overlay/archive/1ae3c888f0cbb328f9e4e61e12e8c0eaaa3e95d4.tar.gz; })) ]; };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  emacs-osx = import sources.emacs-osx;
+  myEmacs = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
 in
 with builtins; {
 
   nixpkgs.config.allowUnfree = true;
+  # experimental-features = nix-command flakes;
 
   home = {
     username = "${user}";
@@ -16,7 +17,7 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell emacs-osx.emacsOsxNative];
+      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell myEmacs pkgs.nixUnstable];
 
     file = {
     };
@@ -96,6 +97,9 @@ with builtins; {
 
         # NOTE: idris2: so that the system knows where to look for library support code
         export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
+
+        # NOTE: make a GLS for doom to use.
+        ln -s $HOME/.nix-profile/bin/ls $HOME/.local/bin/gls
         '';
     };
 

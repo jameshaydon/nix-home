@@ -22,10 +22,12 @@ with builtins; {
     file = {
     };
 
-    # FIXME: OSX does not pick these up if symlinked hence real copy
-    # FIXME: Don't hardcode ~/nix-home
+    # NOTE: make a gls (GNU ls) for emacs-doom to use.
     extraProfileCommands = ''
-      find "${config.home.homeDirectory}/nix-home/fonts/" -name "FiraCode*" -exec ls {} + | xargs -I % cp -p % "${config.home.homeDirectory}/Library/Fonts/"
+      if [ ! -f ${config.home.homeDirectory}/.local/bin/gls ]
+      then
+        ln -s ${config.home.homeDirectory}/.nix-profile/bin/ls ${config.home.homeDirectory}/.local/bin/gls
+      fi
     '';
 
     # Source the Nix profile
@@ -97,9 +99,6 @@ with builtins; {
 
         # NOTE: idris2: so that the system knows where to look for library support code
         export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
-
-        # NOTE: make a GLS for doom to use.
-        ln -s $HOME/.nix-profile/bin/ls $HOME/.local/bin/gls
         '';
     };
 

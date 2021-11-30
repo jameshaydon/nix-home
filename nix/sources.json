@@ -1,14 +1,26 @@
 {
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "58236c2d03c4405a560f12cb7536251973f551e0",
+        "sha256": "1qnsrwj2pilj6ssp0w72ygm6sifxn2xn5qf1i245vws8ff7mdgmm",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/58236c2d03c4405a560f12cb7536251973f551e0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "371576cdc2580ba93a38e28da8ece2129f558815",
-        "sha256": "0vwkmnvc4pggicgzii4gg22pv5whp2aiian0rs80srwzkxl2sz0n",
+        "rev": "9de77227d7780518cfeaee5a917970247f3ecc56",
+        "sha256": "0d9mddbndy6f7q3vmfmc563ncbi407l2v1i4f9ydqlm334qzfqb9",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/371576cdc2580ba93a38e28da8ece2129f558815.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/9de77227d7780518cfeaee5a917970247f3ecc56.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -17,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2bb5cbf7f8b99a8d1d6646abe5ab993f6823212f",
-        "sha256": "0vn6znlk36azpha4jinvwg6mqqhzahm4m3lfy86p4drb7rb72w8i",
+        "rev": "78cb77b29d37a9663e05b61abb4fa09465da4b70",
+        "sha256": "0a6nv2wx82zgcw4rnvhjj0pqm0w4acbafnpj1imgjpzwss7v6w0i",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/2bb5cbf7f8b99a8d1d6646abe5ab993f6823212f.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/78cb77b29d37a9663e05b61abb4fa09465da4b70.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

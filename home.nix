@@ -2,14 +2,21 @@ user: { config, ... }:
 let
   sources = import ./nix/sources.nix;
   hm = import sources.home-manager { };
-  pkgs = import sources.nixpkgs { overlays = [ (import (builtins.fetchTarball {  url = https://github.com/nix-community/emacs-overlay/archive/1ae3c888f0cbb328f9e4e61e12e8c0eaaa3e95d4.tar.gz; })) ]; };
+  # We default to apple silicon
+  pkgs = import sources.nixpkgs {
+    localSystem = "aarch64-darwin";
+    overlays = [(import sources.emacs-overlay)];
+  };
+  # But sometimes we fallback to this:
+  pkgs_x86_64 = import sources.nixpkgs {
+    localSystem = "x86_64-darwin";
+  };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
   myEmacs = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
 in
 with builtins; {
 
   nixpkgs.config.allowUnfree = true;
-  # experimental-features = nix-command flakes;
 
   home = {
     username = "${user}";
@@ -17,18 +24,20 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json)) ++ [myaspell myEmacs pkgs.nixUnstable];
+      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json))
+      ++
+      [ myaspell
+        myEmacs
+        pkgs.nixUnstable
+        # Once in a while you can see if the following packages now work with
+        # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).
+        pkgs_x86_64.niv
+        pkgs_x86_64.idris2
+        pkgs_x86_64.gitAndTools.delta
+      ];
 
     file = {
     };
-
-    # NOTE: make a gls (GNU ls) for emacs-doom to use.
-    extraProfileCommands = ''
-      if [ ! -f ${config.home.homeDirectory}/.local/bin/gls ]
-      then
-        ln -s ${config.home.homeDirectory}/.nix-profile/bin/ls ${config.home.homeDirectory}/.local/bin/gls
-      fi
-    '';
 
     # Source the Nix profile
     sessionVariablesExtra = ''
@@ -42,7 +51,10 @@ with builtins; {
     bat.enable = true;
 
     direnv.enable = true;
-    #direnv.enableNixDirenvIntegration = true;
+    direnv.nix-direnv.enable = true;
+    # direnv.nix-direnv.enableFlakes = true;
+
+    bash.enable = true;
 
     zsh = {
       enable = true;
@@ -58,7 +70,7 @@ with builtins; {
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins=["git" "osx" "brew" "fzf" "direnv"];
+        plugins=["git" "macos" "brew" "fzf" "direnv"];
       };
       initExtra =
         ''
@@ -99,6 +111,8 @@ with builtins; {
 
         # NOTE: idris2: so that the system knows where to look for library support code
         export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
+
+        export NIX_PATH="nixpkgs=${sources.nixpkgs.url}":$NIX_PATH
         '';
     };
 

@@ -113,6 +113,10 @@ with builtins; {
         export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
 
         export NIX_PATH="nixpkgs=${sources.nixpkgs.url}":$NIX_PATH
+
+        function anki_prompt_fun() { anki-prompt-exe james "Library/Application Support/Anki2" }
+
+        add-zsh-hook precmd anki_prompt_fun
         '';
     };
 

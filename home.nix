@@ -34,6 +34,10 @@ with builtins; {
         pkgs_x86_64.niv
         pkgs_x86_64.idris2
         pkgs_x86_64.gitAndTools.delta
+
+        # Purescript
+        pkgs.spago
+        pkgs_x86_64.purescript
       ];
 
     file = {

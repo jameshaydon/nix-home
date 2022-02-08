@@ -13,6 +13,7 @@
   "graphviz",
   "haskellPackages.implicit-hie",
   "haskellPackages.hpack",
+  "haskellPackages.hoogle",
   "just",
   "mosh",
   "nixfmt",

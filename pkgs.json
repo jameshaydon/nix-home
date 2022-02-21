@@ -29,5 +29,7 @@
   "shellcheck",
   "wget",
   "youtube-dl",
-  "zile"
+  "zile",
+  "hugo",
+  "gnupg"
 ]

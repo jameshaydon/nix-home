@@ -8,9 +8,9 @@ let
     overlays = [(import sources.emacs-overlay)];
   };
   # But sometimes we fallback to this:
-  pkgs_x86_64 = import sources.nixpkgs {
-    localSystem = "x86_64-darwin";
-  };
+  # pkgs_x86_64 = import sources.nixpkgs {
+  #   localSystem = "x86_64-darwin";
+  # };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
   myEmacs = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
 in
@@ -29,11 +29,13 @@ with builtins; {
       [ myaspell
         myEmacs
         pkgs.nixUnstable
+        pkgs.gitAndTools.delta
+        pkgs.niv
+
         # Once in a while you can see if the following packages now work with
         # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).
-        pkgs_x86_64.niv
-        pkgs_x86_64.idris2
-        pkgs_x86_64.gitAndTools.delta
+
+        # pkgs_x86_64.idris2
       ];
 
     file = {
@@ -175,9 +177,9 @@ with builtins; {
       };
     };
 
-    htop.enable = true;
+    # htop.enable = true;
 
-    jq.enable = true;
+    # jq.enable = true;
 
   };
 }

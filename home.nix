@@ -12,7 +12,7 @@ let
   #   localSystem = "x86_64-darwin";
   # };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  myEmacs = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
+  myEmacs = (pkgs.emacsPackagesFor pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
 in
 with builtins; {
 

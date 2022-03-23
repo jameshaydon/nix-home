@@ -8,9 +8,7 @@ let
     overlays = [(import sources.emacs-overlay)];
   };
   # But sometimes we fallback to this:
-  # pkgs_x86_64 = import sources.nixpkgs {
-  #   localSystem = "x86_64-darwin";
-  # };
+  # pkgs_x86_64 = import sources.nixpkgs { localSystem = "x86_64-darwin"; };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
   myEmacs = (pkgs.emacsPackagesFor pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
 in
@@ -36,6 +34,7 @@ with builtins; {
         # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).
 
         # pkgs_x86_64.idris2
+        # pkgs_x86_64.nix-du
       ];
 
     file = {

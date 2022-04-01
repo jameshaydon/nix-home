@@ -29,6 +29,7 @@ with builtins; {
         pkgs.nixUnstable
         pkgs.gitAndTools.delta
         pkgs.niv
+        pkgs.pandoc
 
         # Once in a while you can see if the following packages now work with
         # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).

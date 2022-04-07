@@ -53,9 +53,11 @@ with builtins; {
 
     bat.enable = true;
 
-    direnv.enable = true;
-    direnv.nix-direnv.enable = true;
-    # direnv.nix-direnv.enableFlakes = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      # nix-direnv.enableFlakes = true;
+    };
 
     bash.enable = true;
 

@@ -10,7 +10,7 @@ let
   # But sometimes we fallback to this:
   # pkgs_x86_64 = import sources.nixpkgs { localSystem = "x86_64-darwin"; };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  myEmacs = (pkgs.emacsPackagesFor pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]);
+  myEmacs = ((pkgs.emacsPackagesFor pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]));
 in
 with builtins; {
 
@@ -26,7 +26,7 @@ with builtins; {
       ++
       [ myaspell
         myEmacs
-        pkgs.nixUnstable
+        pkgs.nix # pkgs.nixUnstable
         pkgs.gitAndTools.delta
         pkgs.niv
         pkgs.pandoc
@@ -48,6 +48,7 @@ with builtins; {
   };
 
   programs = {
+
     home-manager.enable = true;
 
     bat.enable = true;

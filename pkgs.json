@@ -1,5 +1,4 @@
 [
-  "awscli2",
   "cachix",
   "cmake",
   "exa",
@@ -8,20 +7,17 @@
   "fontconfig",
   "fswatch",
   "gitAndTools.gh",
-  "gnugrep",
   "haskellPackages.implicit-hie",
   "haskellPackages.hpack",
   "haskellPackages.hoogle",
   "just",
-  "mosh",
   "nodePackages.prettier",
   "nodePackages.stylelint",
   "ripgrep",
   "sass",
   "shellcheck",
   "wget",
-  "youtube-dl",
   "zile",
-  "hugo",
-  "gnupg"
+  "gnupg",
+  "z3"
 ]

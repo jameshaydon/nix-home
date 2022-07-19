@@ -10,13 +10,16 @@ let
   # But sometimes we fallback to this:
   # pkgs_x86_64 = import sources.nixpkgs { localSystem = "x86_64-darwin"; };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  myEmacs = ((pkgs.emacsPackagesFor pkgs.emacsGcc).emacsWithPackages (epkgs: [epkgs.vterm]));
+  myEmacs = ((pkgs.emacsPackagesFor pkgs.emacsNativeComp).emacsWithPackages (epkgs: [epkgs.vterm]));
 in
 with builtins; {
 
   nixpkgs.config.allowUnfree = true;
 
   home = {
+
+    stateVersion = "22.11";
+
     username = "${user}";
 
     homeDirectory = "/Users/${user}";
@@ -29,7 +32,8 @@ with builtins; {
         pkgs.nix # pkgs.nixUnstable
         pkgs.gitAndTools.delta
         pkgs.niv
-        pkgs.pandoc
+        # pkgs.pandoc
+        pkgs.nodejs
 
         # Once in a while you can see if the following packages now work with
         # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).
@@ -119,9 +123,9 @@ with builtins; {
 
         export NIX_PATH="nixpkgs=${sources.nixpkgs.url}":$NIX_PATH
 
-        function anki_prompt_fun() { anki-prompt-exe james "Library/Application Support/Anki2" }
+        # function anki_prompt_fun() { anki-prompt-exe james "Library/Application Support/Anki2" }
 
-        add-zsh-hook precmd anki_prompt_fun
+        # add-zsh-hook precmd anki_prompt_fun
         '';
     };
 

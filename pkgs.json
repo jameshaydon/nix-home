@@ -11,13 +11,8 @@
   "haskellPackages.hpack",
   "haskellPackages.hoogle",
   "just",
-  "nodePackages.prettier",
-  "nodePackages.stylelint",
   "ripgrep",
-  "sass",
   "shellcheck",
   "wget",
-  "zile",
-  "gnupg",
-  "z3"
+  "gnupg"
 ]

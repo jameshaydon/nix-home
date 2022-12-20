@@ -32,6 +32,8 @@ with builtins; {
         pkgs.nix # pkgs.nixUnstable
         pkgs.gitAndTools.delta
         pkgs.niv
+        pkgs.z3
+        pkgs.graphviz
         # pkgs.pandoc
         # pkgs.nodejs
         # pkgs.cabal2nix
@@ -42,6 +44,7 @@ with builtins; {
 
         # pkgs_x86_64.idris2
         # pkgs_x86_64.nix-du
+        pkgs.nodejs
       ];
 
     file = {
@@ -114,20 +117,19 @@ with builtins; {
         # NOTE: where brew cask installs latex
         export PATH="$PATH:/Library/TeX/texbin"
 
-        # NOTE: idris 2 executable when building from source
-        export PATH="$PATH:$HOME/.idris2/bin"
-
         # NOTE: ghcup:
         export PATH="$PATH:$HOME/.ghcup/bin"
 
-        # NOTE: idris2: so that the system knows where to look for library support code
-        export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/.idris2/lib
+        # NOTE: I'm installing idris2 from the flake
+        export PATH="$PATH:$HOME/dev/Idris2/result/bin"
 
         export NIX_PATH="nixpkgs=${sources.nixpkgs.url}":$NIX_PATH
 
         # function anki_prompt_fun() { anki-prompt-exe james "Library/Application Support/Anki2" }
 
         # add-zsh-hook precmd anki_prompt_fun
+
+        export DTK_PROGRAM=~/dev/emacspeak/servers/speech-server
         '';
     };
 

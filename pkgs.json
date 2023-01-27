@@ -1,15 +1,10 @@
 [
-  "cachix",
   "cmake",
   "exa",
   "fd",
-  "ffmpeg",
   "fontconfig",
-  "fswatch",
-  "gitAndTools.gh",
   "just",
   "ripgrep",
-  "shellcheck",
   "wget",
   "gnupg"
 ]

@@ -32,7 +32,7 @@ with builtins; {
         pkgs.nix # pkgs.nixUnstable
         pkgs.gitAndTools.delta
         # pkgs.niv
-        # pkgs.z3
+        pkgs.z3
         # pkgs.graphviz
         # pkgs.pandoc
         # pkgs.nodejs
@@ -44,7 +44,8 @@ with builtins; {
 
         # pkgs_x86_64.idris2
         # pkgs_x86_64.nix-du
-        # pkgs.nodejs
+        pkgs.nodejs
+        # pkgs.python39Full
       ];
 
     file = {
@@ -88,6 +89,9 @@ with builtins; {
       };
       initExtra =
         ''
+        # NOTE: the 'run' scipt in _this_ repo:
+        export PATH="$PATH:$HOME/nix-home/bin"
+
         # NOTE: this is used by vterm in emacs:
         vterm_printf(){
             if [ -n "$TMUX" ]; then
@@ -107,9 +111,6 @@ with builtins; {
 
         # NOTE: where haskell installs stuff:
         export PATH="$PATH:$HOME/.local/bin"
-
-        # NOTE: the 'run' scipt in _this_ repo:
-        export PATH="$PATH:$HOME/nix-home/bin"
 
         # NOTE: locally installed npm modules
         export PATH="$PATH:./node_modules/.bin"

@@ -25,8 +25,6 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      map (n: getAttrFromPath (splitString "." n) pkgs) (fromJSON (readFile ./pkgs.json))
-      ++
       [ myaspell
         myEmacs
         pkgs.nix # pkgs.nixUnstable
@@ -46,6 +44,15 @@ with builtins; {
         # pkgs_x86_64.nix-du
         pkgs.nodejs
         # pkgs.python39Full
+
+        pkgs.cmake
+        pkgs.exa
+        pkgs.fd
+        pkgs.fontconfig
+        pkgs.just
+        pkgs.ripgrep
+        pkgs.wget
+        pkgs.gnupg
       ];
 
     file = {
@@ -191,7 +198,7 @@ with builtins; {
 
     # htop.enable = true;
 
-    jq.enable = true;
+    # jq.enable = true;
 
   };
 }

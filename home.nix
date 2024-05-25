@@ -10,7 +10,7 @@ let
   # But sometimes we fallback to this:
   pkgs_x86_64 = import sources.nixpkgs { localSystem = "x86_64-darwin"; };
   myaspell = pkgs.aspellWithDicts (d: [d.en d.en-computers d.en-science d.fr]);
-  myEmacs = ((pkgs.emacsPackagesFor pkgs.emacsUnstable).emacsWithPackages (epkgs: [epkgs.vterm]));
+  myEmacs = ((pkgs.emacsPackagesFor pkgs.emacs-unstable).emacsWithPackages (epkgs: [epkgs.vterm]));
 in
 with builtins; {
 
@@ -25,38 +25,37 @@ with builtins; {
     homeDirectory = "/Users/${user}";
 
     packages = with pkgs.lib;
-      [ myaspell
-        myEmacs
+      [ # myaspell
+        # myEmacs
         pkgs.nix # pkgs.nixUnstable
         pkgs.gitAndTools.delta
-        # pkgs.niv
         pkgs.z3
         # pkgs.graphviz
         # pkgs.pandoc
-        # pkgs.nodejs
         # pkgs.cabal2nix
         # pkgs_x86_64.idris2
 
         # Once in a while you can see if the following packages now work with
         # `pkgs` instead of `pkgs_x86_64` (i.e. Rosetta emulation).
 
-        # pkgs_x86_64.idris2
         # pkgs_x86_64.nix-du
         pkgs.nodejs
+        pkgs.nodePackages.pnpm
+        # pkgs.nodePackages.typescript-language-server
+        # pkgs.deno
         # pkgs.python39Full
 
         pkgs.cmake
-        pkgs.exa
+        # pkgs.exa
         pkgs.fd
         pkgs.fontconfig
         pkgs.just
         pkgs.ripgrep
         pkgs.wget
         pkgs.gnupg
+        pkgs.niv
+        # pkgs.idris2
       ];
-
-    file = {
-    };
 
     # Source the Nix profile
     sessionVariablesExtra = ''
@@ -80,11 +79,11 @@ with builtins; {
 
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       shellAliases = {
         hm = "run home-manager";
-        ls = "exa";
+        # ls = "exa";
         si = "stack install --fast --ghc-options \"-j4 +RTS -A128m -n2m -qg -RTS\"";
         cf = "cabal --ghc-options=\"-j4 +RTS -A128m -n2m -qg -RTS\" --disable-optimization --disable-library-vanilla --enable-executable-dynamic";
         cnf = "cabal --enable-nix --ghc-options=\"-j4 +RTS -A128m -n2m -qg -RTS\" --disable-optimization --disable-library-vanilla --enable-executable-dynamic";
@@ -128,8 +127,8 @@ with builtins; {
         # NOTE: ghcup:
         export PATH="$PATH:$HOME/.ghcup/bin"
 
-        # NOTE: I'm installing idris2 from the flake
-        export PATH="$PATH:$HOME/dev/Idris2/result/bin"
+        # NOTE: lean (elan):
+        export PATH="$PATH:$HOME/.elan/bin"
 
         export NIX_PATH="nixpkgs=${sources.nixpkgs.url}":$NIX_PATH
 
@@ -138,10 +137,18 @@ with builtins; {
         # add-zsh-hook precmd anki_prompt_fun
 
         export DTK_PROGRAM=~/dev/emacspeak/servers/speech-server
+
+        # random executables
+        export PATH="$PATH:~/downloaded_bin"
         '';
     };
 
     fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
